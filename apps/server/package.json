@@ -27,7 +27,7 @@
     "@better-auth/expo": "^1.2.10"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
+    "@artoshiru/eslint-config": "*",
     "@types/bun": "^1.2.6",
     "drizzle-kit": "^0.31.2",
     "tsc-alias": "^1.8.11",

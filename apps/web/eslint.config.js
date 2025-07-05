@@ -1,6 +1,6 @@
 import ts from 'typescript-eslint'
 import { includeIgnoreFile } from '@eslint/compat'
-import { svelteEslint } from '@repo/eslint-config'
+import { svelteEslint } from '@artoshiru/eslint-config'
 import { fileURLToPath } from 'node:url'
 import svelteConfig from './svelte.config.js'
 

@@ -42,7 +42,7 @@
     "@better-auth/expo": "^1.2.10"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
+    "@artoshiru/eslint-config": "*",
     "@babel/core": "^7.26.10",
     "@types/react": "~19.0.10",
     "tailwindcss": "^3.4.17",

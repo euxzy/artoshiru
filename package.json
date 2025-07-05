@@ -6,13 +6,16 @@
     "packages/*"
   ],
   "scripts": {
-    "prepare": "husky",
+    "prepare": "husky || echo ''",
     "dev": "turbo dev",
     "build": "turbo build",
     "check-types": "turbo check-types",
+    "format": "prettier --write .",
+    "lint": "turbo lint",
     "dev:native": "turbo -F native dev",
     "dev:web": "turbo -F web dev",
     "dev:server": "turbo -F server dev",
+    "dev:web:server": "turbo -F web -F server dev",
     "db:push": "turbo -F server db:push",
     "db:studio": "turbo -F server db:studio",
     "db:generate": "turbo -F server db:generate",
@@ -20,13 +23,16 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "turbo": "^2.5.4",
     "husky": "^9.1.7",
-    "lint-staged": "^15.5.0"
+    "lint-staged": "^15.5.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-svelte": "^3.4.0",
+    "prettier-plugin-tailwindcss": "^0.6.13",
+    "turbo": "^2.5.4"
   },
   "lint-staged": {
-    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
-      "biome check --write ."
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,svelte}": [
+      "prettier --write ."
     ]
   },
   "packageManager": "bun@1.2.18"

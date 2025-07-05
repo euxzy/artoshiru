@@ -1,6 +1,8 @@
 # artoshiru
 
-This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines SvelteKit, Hono, ORPC, and more.
+A cross-platform personal finance tracking app built with SvelteKit, Hono, ORPC, React Native, and TailwindCSS, organized in a monorepo structure.
+
+This app helps users efficiently manage their monthly income and expenses with a clean, responsive, and user-friendly interface.
 
 ## Features
 
@@ -25,6 +27,11 @@ First, install the dependencies:
 
 ```bash
 bun install
+```
+
+Then, generate shadcn component:
+```bash
+bun generate:shadcn
 ```
 
 ## Database Setup
@@ -60,15 +67,19 @@ The API is running at [http://localhost:3000](http://localhost:3000).
 ```
 artoshiru/
 ├── apps/
-│   ├── web/         # Frontend application (SvelteKit)
-│   ├── native/      # Mobile application (React Native, Expo)
-│   └── server/      # Backend API (Hono, ORPC)
+│   ├── web/            # Frontend application (SvelteKit)
+│   ├── native/         # Mobile application (React Native, Expo)
+│   └── server/         # Backend API (Hono, ORPC)
+│
+├── packages/
+│   ├── eslint-config/  # Eslint config for each apps
+│   └── svelte/         # Shared libs for Svelte apps
 ```
 
 ## Available Scripts
 
 - `bun dev`: Start all applications in development mode
-- `bun build`: Build all applications
+- `bun run build`: Build all applications
 - `bun dev:web`: Start only the web application
 - `bun dev:server`: Start only the server
 - `bun check-types`: Check TypeScript types across all apps
@@ -76,3 +87,7 @@ artoshiru/
 - `bun db:push`: Push schema changes to database
 - `bun db:studio`: Open database studio UI
 - `cd apps/server && bun db:local`: Start the local SQLite database
+- `bun format`: Format code in all applications using Prettier
+- `bun lint`: Run ESLint to analyze the code for syntax errors and code quality issues
+- `bun generate:shadcn`: Generate a shared shadcn component for the UI
+- `bun shadcn`: A shorthand for shadcn cli

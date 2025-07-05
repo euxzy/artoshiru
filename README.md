@@ -1,8 +1,10 @@
-# artoshiru
+# Artoshiru
 
-A cross-platform personal finance tracking app built with SvelteKit, Hono, ORPC, React Native, and TailwindCSS, organized in a monorepo structure.
+**Artoshiru** is a cross-platform personal finance tracking app built with **SvelteKit**, **Hono**, **oRPC**, **React Native**, and **TailwindCSS**, structured in a **monorepo** setup.
 
-This app helps users efficiently manage their monthly income and expenses with a clean, responsive, and user-friendly interface.
+> From "Artos" (Sundanese for *money*) + "Shirusu" (記す / しるす - Japanese for *to record* or *to note down*)
+
+Together, they represent the purpose of the app: **recording your finances clearly and efficiently**.
 
 ## Features
 
@@ -23,13 +25,13 @@ This app helps users efficiently manage their monthly income and expenses with a
 
 ## Getting Started
 
-First, install the dependencies:
+Install dependencies:
 
 ```bash
 bun install
 ```
 
-Then, generate shadcn component:
+Generate UI components with `shadcn`:
 ```bash
 bun generate:shadcn
 ```
@@ -59,8 +61,11 @@ bun dev
 ```
 
 Open [http://localhost:5173](http://localhost:5173) in your browser to see the web application.
-Use the Expo Go app to run the mobile application.
+
 The API is running at [http://localhost:3000](http://localhost:3000).
+
+Use the Expo Go app to run the mobile application.
+
 
 ## Project Structure
 
@@ -72,22 +77,30 @@ artoshiru/
 │   └── server/         # Backend API (Hono, ORPC)
 │
 ├── packages/
-│   ├── eslint-config/  # Eslint config for each apps
-│   └── svelte/         # Shared libs for Svelte apps
+│   ├── eslint-config/  # Shared ESLint config
+│   └── svelte/         # Shared Svelte libraries
 ```
 
 ## Available Scripts
 
-- `bun dev`: Start all applications in development mode
-- `bun run build`: Build all applications
-- `bun dev:web`: Start only the web application
-- `bun dev:server`: Start only the server
-- `bun check-types`: Check TypeScript types across all apps
-- `bun dev:native`: Start the React Native/Expo development server
-- `bun db:push`: Push schema changes to database
-- `bun db:studio`: Open database studio UI
-- `cd apps/server && bun db:local`: Start the local SQLite database
-- `bun format`: Format code in all applications using Prettier
-- `bun lint`: Run ESLint to analyze the code for syntax errors and code quality issues
-- `bun generate:shadcn`: Generate a shared shadcn component for the UI
-- `bun shadcn`: A shorthand for shadcn cli
+| Script                                | Description                                      |
+|---------------------------------------|--------------------------------------------------|
+| `bun dev`                             | Start all applications in development mode       |
+| `bun dev:web`                         | Start only the web application                   |
+| `bun dev:server`                      | Start only the backend server                    |
+| `bun dev:native`                      | Start the React Native/Expo development server   |
+| `bun run build`                       | Build all applications                           |
+| `bun db:push`                         | Push schema changes to database                  |
+| `bun db:studio`                       | Open Drizzle Studio UI                           |
+| `bun format`                          | Format codebase using Prettier                   |
+| `bun lint`                            | Run ESLint checks                                |
+| `bun check-types`                     | Check TypeScript types                           |
+| `bun generate:shadcn`                 | Generate reusable shadcn/ui component            |
+| `bun shadcn`                          | Alias for shadcn CLI                             |
+| `cd apps/server && bun db:local`      | Start the local SQLite database                  |
+
+---
+
+## Contributing
+
+Contributions are welcome! Feel free to open issues or PRs.

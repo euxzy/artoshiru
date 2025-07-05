@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "start": "vite preview",
     "preview": "vite preview",
     "prepare": "svelte-kit sync || echo ''",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -26,11 +27,13 @@
     "svelte": "^5.28.2",
     "svelte-check": "^4.1.6",
     "tailwindcss": "^4.1.4",
+    "tw-animate-css": "^1.3.5",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.35.1",
     "vite": "^6.3.3"
   },
   "dependencies": {
+    "@artoshiru/svelte": "*",
     "@tanstack/svelte-form": "^1.7.0",
     "@tanstack/svelte-query": "^5.74.4",
     "zod": "^3.25.16",

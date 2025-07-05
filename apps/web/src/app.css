@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '@artoshiru/svelte/styles';
 
 body {
   @apply bg-neutral-950 text-neutral-100;

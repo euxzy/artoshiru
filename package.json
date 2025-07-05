@@ -9,6 +9,7 @@
     "prepare": "husky || echo ''",
     "dev": "turbo dev",
     "build": "turbo build",
+    "start": "turbo start",
     "check-types": "turbo check-types",
     "format": "prettier --write .",
     "lint": "turbo lint",
@@ -19,7 +20,9 @@
     "db:push": "turbo -F server db:push",
     "db:studio": "turbo -F server db:studio",
     "db:generate": "turbo -F server db:generate",
-    "db:migrate": "turbo -F server db:migrate"
+    "db:migrate": "turbo -F server db:migrate",
+    "shadcn": "cd packages/svelte && bun run shadcn",
+    "generate:shadcn": "bun run build -F @artoshiru/svelte"
   },
   "dependencies": {},
   "devDependencies": {

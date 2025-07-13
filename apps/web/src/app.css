@@ -1,6 +1,11 @@
 @import 'tailwindcss';
 @import '@artoshiru/svelte/styles';
 
-body {
-  @apply bg-neutral-950 text-neutral-100;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }

@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { createForm } from '@tanstack/svelte-form'
   import { goto } from '$app/navigation'
   import { authClient } from '$lib/auth-client'
-  import { z } from 'zod/v4'
   import { Button, Input, Label } from '@artoshiru/svelte/ui'
   import Icon from '@iconify/svelte'
+  import { createForm } from '@tanstack/svelte-form'
+  import { z } from 'zod/v4'
 
   const validationSchema = z.object({
     username: z.string().min(1, 'Username is required'),
@@ -28,8 +28,6 @@
       onSubmit: validationSchema,
     },
   }))
-
-  const id = $props.id()
 </script>
 
 <form
@@ -74,13 +72,13 @@
         <div>
           <div class="grid gap-3">
             <div class="flex items-center">
-              <Label for="password-{id}">Password</Label>
+              <Label for={field.name}>Password</Label>
               <a href="##" tabindex="-1" class="ml-auto text-sm underline-offset-4 hover:underline">
                 Forgot your password?
               </a>
             </div>
             <Input
-              id="password-{id}"
+              id={field.name}
               type="password"
               onblur={field.handleBlur}
               value={field.state.value}
@@ -97,7 +95,15 @@
         </div>
       {/snippet}
     </form.Field>
-    <Button type="submit" class="w-full">Login</Button>
+
+    <form.Subscribe selector={(state) => ({ canSubmit: state.canSubmit, isSubmitting: state.isSubmitting })}>
+      {#snippet children(state)}
+        <Button type="submit" class="w-full" disabled={!state.canSubmit || state.isSubmitting}>
+          {state.isSubmitting ? 'Submitting...' : 'Login'}
+        </Button>
+      {/snippet}
+    </form.Subscribe>
+
     <div
       class="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t"
     >

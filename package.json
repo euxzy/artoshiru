@@ -16,7 +16,7 @@
     "dev:native": "turbo -F native dev",
     "dev:web": "turbo -F web dev",
     "dev:server": "turbo -F server dev",
-    "dev:web:server": "turbo -F web -F server dev",
+    "dev:web:server": "turbo -F web -F server dev -F @artoshiru/svelte",
     "db:push": "turbo -F server db:push",
     "db:studio": "turbo -F server db:studio",
     "db:generate": "turbo -F server db:generate",

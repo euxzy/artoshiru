@@ -1,0 +1,73 @@
+<script lang="ts">
+  import {
+    Button,
+    Separator,
+    Sidebar,
+    SidebarContent,
+    SidebarHeader,
+    SidebarInset,
+    SidebarMenu,
+    SidebarMenuButton,
+    SidebarMenuItem,
+    SidebarProvider,
+    SidebarTrigger,
+  } from '@artoshiru/svelte/ui'
+  import { HandCoins } from '@lucide/svelte'
+
+  let { children } = $props()
+</script>
+
+<div>
+  <SidebarProvider style="--sidebar-width: calc(var(--spacing) * 72); --header-height: calc(var(--spacing) * 12);">
+    <Sidebar collapsible="offcanvas" variant="inset">
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton class="data-[slot=sidebar-menu-button]:!p-1.5">
+              {#snippet child({ props })}
+                <a href="/dashboard" {...props}>
+                  <HandCoins />
+                  <span class="text-base font-semibold">Artoshiru</span>
+                </a>
+              {/snippet}
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
+
+      <SidebarContent></SidebarContent>
+    </Sidebar>
+
+    <SidebarInset>
+      <header
+        class="flex h-(--header-height) shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)"
+      >
+        <div class="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
+          <SidebarTrigger class="-ml-1" />
+          <Separator orientation="vertical" class="mx-2 data-[orientation=vertical]:h-4" />
+          <h1 class="text-base font-medium">Dashboard</h1>
+          <div class="ml-auto flex items-center gap-2">
+            <Button
+              href="https://github.com/shadcn-ui/ui/tree/main/apps/v4/app/(examples)/dashboard"
+              variant="ghost"
+              size="sm"
+              class="dark:text-foreground hidden sm:flex"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      <div class="flex flex-1 flex-col">
+        <div class="@container/main flex flex-1 flex-col gap-2">
+          <div class="p-4 md:p-6">
+            {@render children?.()}
+          </div>
+        </div>
+      </div>
+    </SidebarInset>
+  </SidebarProvider>
+</div>

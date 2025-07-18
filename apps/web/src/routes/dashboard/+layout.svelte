@@ -4,6 +4,8 @@
     Separator,
     Sidebar,
     SidebarContent,
+    SidebarGroup,
+    SidebarGroupContent,
     SidebarHeader,
     SidebarInset,
     SidebarMenu,
@@ -12,21 +14,50 @@
     SidebarProvider,
     SidebarTrigger,
   } from '@artoshiru/svelte/ui'
+  import Icon from '@iconify/svelte'
   import { HandCoins } from '@lucide/svelte'
 
   let { children } = $props()
+
+  const navMain = [
+    {
+      title: 'Dashboard',
+      url: '#',
+      icon: 'akar-icons:dashboard',
+    },
+    {
+      title: 'Source',
+      url: '#',
+      icon: 'akar-icons:wallet',
+    },
+    {
+      title: 'Pocket',
+      url: '#',
+      icon: 'streamline-plump:bag-remix',
+    },
+    {
+      title: 'Transaction',
+      url: '#',
+      icon: 'streamline:subscription-cashflow',
+    },
+    {
+      title: 'Category',
+      url: '#',
+      icon: 'pajamas:list-task',
+    },
+  ]
 </script>
 
 <div>
   <SidebarProvider style="--sidebar-width: calc(var(--spacing) * 72); --header-height: calc(var(--spacing) * 12);">
-    <Sidebar collapsible="offcanvas" variant="inset">
+    <Sidebar collapsible="icon" variant="inset">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton class="data-[slot=sidebar-menu-button]:!p-1.5">
               {#snippet child({ props })}
                 <a href="/dashboard" {...props}>
-                  <HandCoins />
+                  <HandCoins size={32} />
                   <span class="text-base font-semibold">Artoshiru</span>
                 </a>
               {/snippet}
@@ -35,7 +66,26 @@
         </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarContent></SidebarContent>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent class="flex flex-col gap-2">
+            <SidebarMenu>
+              {#each navMain as item (item.title)}
+                <SidebarMenuItem>
+                  <SidebarMenuButton tooltipContent={item.title}>
+                    <a href={item.url} class="flex items-center gap-2">
+                      {#if item.icon}
+                        <Icon icon={item.icon} class="size-4" />
+                      {/if}
+                      {item.title}
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              {/each}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
     </Sidebar>
 
     <SidebarInset>

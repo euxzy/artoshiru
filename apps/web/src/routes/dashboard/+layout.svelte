@@ -48,7 +48,7 @@
           <h1 class="text-base font-medium">Dashboard</h1>
           <div class="ml-auto flex items-center gap-2">
             <Button
-              href="https://github.com/shadcn-ui/ui/tree/main/apps/v4/app/(examples)/dashboard"
+              href="https://github.com/euxzy/artoshiru"
               variant="ghost"
               size="sm"
               class="dark:text-foreground hidden sm:flex"

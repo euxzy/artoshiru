@@ -2,11 +2,11 @@
 
 **Artoshiru** is a cross-platform personal finance tracking app built with **SvelteKit**, **Hono**, **oRPC**, **React Native**, and **TailwindCSS**, structured in a **monorepo** setup.
 
-> From "Artos" (Sundanese for _money_) + "Shirusu" (記す / しるす - Japanese for _to record_ or _to note down_)
+> From "Artos" (ᮃᮁᮒᮧᮞ᮪ - Sundanese for _money_) + "Shirusu" (記す / しるす - Japanese for _to record_ or _to note down_)
 
-Together, they represent the purpose of the app: **recording your finances clearly and efficiently**.
+The app's purpose is to provide a **clear and efficient way to track your financial records**.
 
-## Features
+## Tech Stack
 
 - **TypeScript** - For type safety and improved developer experience
 - **SvelteKit** - Web framework for building Svelte apps
@@ -89,6 +89,7 @@ artoshiru/
 | `bun dev:web`                    | Start only the web application                 |
 | `bun dev:server`                 | Start only the backend server                  |
 | `bun dev:native`                 | Start the React Native/Expo development server |
+| `bun dev:web:server`             | Start the web application and backend server   |
 | `bun run build`                  | Build all applications                         |
 | `bun db:push`                    | Push schema changes to database                |
 | `bun db:studio`                  | Open Drizzle Studio UI                         |

@@ -22,6 +22,7 @@ ENV NODE_ENV=production
 COPY --from=builder /app/out/full/ .
 
 # run the app
+WORKDIR /app/apps/web
 USER bun
 EXPOSE 4173/tcp
-ENTRYPOINT [ "bun", "run", "start" ]
+ENTRYPOINT ["bun", "run", "start"]

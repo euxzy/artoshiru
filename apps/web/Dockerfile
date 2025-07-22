@@ -29,10 +29,9 @@ COPY --from=builder /app/out/full/ .
 RUN bun run prepare:web
 
 # build the app
-WORKDIR /app/apps/web
-RUN bun run build
+RUN cd apps/web && bun run build
 
 # run the app
 USER bun
-EXPOSE 4173/tcp
-ENTRYPOINT ["bun", "run", "start"]
+EXPOSE 3000/tcp
+ENTRYPOINT ["bun", "apps/web/build/index.js"]

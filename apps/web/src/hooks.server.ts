@@ -6,6 +6,10 @@ const AUTH = '/auth'
 
 export const handle: Handle = async ({ event, resolve }) => {
   const pathname = event.url.pathname
+
+  // TODO: should be remove
+  console.log(event.cookies.get('__Secure-better-auth.session_token'))
+
   if (PRIVATE_PREFIX.some((prefix) => pathname.startsWith(prefix)) || pathname.startsWith(AUTH)) {
     const { data: session } = await authClient.getSession({
       fetchOptions: {

@@ -20,6 +20,7 @@ ENV NODE_ENV=production
 
 # copy dependencies and source code into final image
 COPY --from=builder /app/out/full/ .
+RUN bun run build
 
 # run the app
 WORKDIR /app/apps/web

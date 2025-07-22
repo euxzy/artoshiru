@@ -24,4 +24,4 @@ COPY --from=builder /app/out/full/ .
 # run the app
 USER bun
 EXPOSE 3000/tcp
-ENTRYPOINT [ "bun", "run", "apps/server/src/index.ts" ]
+ENTRYPOINT ["bun", "run", "apps/server/src/index.ts"]

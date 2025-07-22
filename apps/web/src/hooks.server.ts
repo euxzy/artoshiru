@@ -1,3 +1,4 @@
+import { env } from '$env/dynamic/public'
 import { authClient } from '$lib/auth-client'
 import { redirect, type Handle } from '@sveltejs/kit'
 
@@ -10,6 +11,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   if (PRIVATE_PREFIX.some((prefix) => pathname.startsWith(prefix)) || pathname.startsWith(AUTH)) {
     const { data: session } = await authClient.getSession({
       fetchOptions: {
+        baseURL: env.PUBLIC_SERVER_URL,
         headers: event.request.headers,
         credentials: 'include',
       },

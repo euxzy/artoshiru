@@ -3,6 +3,12 @@
 FROM oven/bun:1 AS base
 WORKDIR /app
 
+# environment variables
+ARG PUBLIC_SERVER_URL
+ARG PUBLIC_APP_URL
+ENV PUBLIC_SERVER_URLL=$PUBLIC_SERVER_URL
+ENV PUBLIC_APP_URL=$PUBLIC_APP_URL
+
 # globally install turbo
 FROM base AS builder
 RUN bun install turbo@^2.5.4 --global

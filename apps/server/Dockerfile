@@ -21,7 +21,10 @@ ENV NODE_ENV=production
 # copy dependencies and source code into final image
 COPY --from=builder /app/out/full/ .
 
+# build the app
+RUN bun run build -F server
+
 # run the app
 USER bun
 EXPOSE 3000/tcp
-ENTRYPOINT ["bun", "run", "apps/server/src/index.ts"]
+ENTRYPOINT ["bun", "run", "apps/server/dist/src/index.js"]

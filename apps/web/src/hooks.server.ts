@@ -10,6 +10,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     const { data: session } = await authClient.getSession({
       fetchOptions: {
         headers: event.request.headers,
+        credentials: 'include',
       },
     })
 

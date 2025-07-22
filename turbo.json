@@ -32,7 +32,11 @@
       "cache": false,
       "persistent": true
     },
-    "check": {
+    "prepare": {
+      "cache": false,
+      "persistent": true
+    },
+    "prepare:web": {
       "cache": false,
       "persistent": true
     },

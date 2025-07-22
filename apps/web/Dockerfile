@@ -9,7 +9,7 @@ RUN bun install turbo@^2.5.4 --global
 COPY . .
 
 # Generate a partial monorepo with a pruned lockfile for a target workspace.
-RUN turbo prune web --docker
+RUN turbo prune web server --docker
 
 # install dependencies
 FROM base AS installer
@@ -20,10 +20,13 @@ ENV NODE_ENV=production
 
 # copy dependencies and source code into final image
 COPY --from=builder /app/out/full/ .
-RUN bun run check && bun run build
+RUN bun run prepare:web
+
+# build the app
+WORKDIR /app/apps/web
+RUN bun run build
 
 # run the app
-WORKDIR /app/apps/web
 USER bun
 EXPOSE 4173/tcp
 ENTRYPOINT ["bun", "run", "start"]

@@ -11,11 +11,17 @@ export const auth = betterAuth({
 
     schema: schema,
   }),
-  trustedOrigins: [process.env.CORS_ORIGIN || '', 'my-better-t-app://'],
+  trustedOrigins: [process.env.CORS_ORIGIN || ''],
   emailAndPassword: {
     enabled: true,
   },
   secret: process.env.BETTER_AUTH_SECRET,
   baseURL: process.env.BETTER_AUTH_URL,
   plugins: [expo(), username({ minUsernameLength: 3 })],
+  socialProviders: {
+    github: {
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+    },
+  },
 })

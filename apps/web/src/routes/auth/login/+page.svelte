@@ -1,8 +1,8 @@
 <script lang="ts">
   import { goto } from '$app/navigation'
   import { authClient } from '$lib/auth-client'
+  import { SocialAuth } from '$lib/components/shared/auth'
   import { Button, Input, Label } from '@artoshiru/svelte/ui'
-  import Icon from '@iconify/svelte'
   import { createForm } from '@tanstack/svelte-form'
   import { z } from 'zod/v4'
 
@@ -104,25 +104,7 @@
       {/snippet}
     </form.Subscribe>
 
-    <div
-      class="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t"
-    >
-      <span class="bg-background text-muted-foreground relative z-10 px-2"> Or continue with </span>
-    </div>
-    <div class="grid grid-cols-3 gap-4">
-      <Button variant="outline" type="button" class="w-full">
-        <Icon icon="akar-icons:github-fill" />
-        <span class="sr-only">Login with GitHub</span>
-      </Button>
-      <Button variant="outline" type="button" class="w-full">
-        <Icon icon="akar-icons:google-fill" />
-        <span class="sr-only">Login with Google</span>
-      </Button>
-      <Button variant="outline" type="button" class="w-full">
-        <Icon icon="akar-icons:linkedin-fill" />
-        <span class="sr-only">Login with Linkedin</span>
-      </Button>
-    </div>
+    <SocialAuth />
   </div>
   <div class="text-center text-sm">
     Don&apos;t have an account?

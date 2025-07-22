@@ -8,7 +8,9 @@
     "CORS_ORIGIN",
     "BETTER_AUTH_SECRET",
     "BETTER_AUTH_URL",
-    "EXPO_PUBLIC_SERVER_URL"
+    "EXPO_PUBLIC_SERVER_URL",
+    "GITHUB_CLIENT_ID",
+    "GITHUB_CLIENT_SECRET"
   ],
   "tasks": {
     "build": {

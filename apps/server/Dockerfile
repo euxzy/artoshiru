@@ -3,32 +3,23 @@
 FROM oven/bun:1 AS base
 WORKDIR /app
 
-# install dependencies into temp directory
-# this will cache them and speed up future builds
-FROM base AS install
-RUN mkdir -p /temp/dev
-COPY package.json bun.lock /temp/dev/
-COPY apps/server/package.json /temp/dev/apps/server/
-RUN cd /temp/dev && bun install --frozen-lockfile
-
-# install with --production (exclude devDependencies)
-RUN mkdir -p /temp/prod
-COPY package.json bun.lock /temp/prod/
-COPY apps/server/package.json /temp/prod/apps/server/
-RUN cd /temp/prod && bun install --frozen-lockfile --production
-
-# copy node_modules from temp directory
-# then copy all (non-ignored) project files into the image
-FROM base AS prerelease
-COPY --from=install /temp/dev/node_modules node_modules
+# globally install turbo
+FROM base AS builder
+RUN bun install turbo@^2.5.4 --global
 COPY . .
+
+# Generate a partial monorepo with a pruned lockfile for a target workspace.
+RUN turbo prune server --docker
+
+# install dependencies
+FROM base AS installer
+COPY --from=builder /app/out/json/ .
+RUN bun install
 
 ENV NODE_ENV=production
 
-# copy production dependencies and source code into final image
-FROM base AS release
-COPY --from=install /temp/prod/node_modules node_modules
-COPY --from=prerelease /app .
+# copy dependencies and source code into final image
+COPY --from=builder /app/out/full/ .
 
 # run the app
 USER bun

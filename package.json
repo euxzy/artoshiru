@@ -13,6 +13,7 @@
     "check-types": "turbo check-types",
     "format": "prettier --write .",
     "lint": "turbo lint",
+    "prepare:web": "turbo prepare",
     "dev:native": "turbo -F native dev",
     "dev:web": "turbo -F web dev",
     "dev:server": "turbo -F server dev",

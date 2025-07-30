@@ -1,0 +1,27 @@
+# use the official Bun image
+# see all versions at https://hub.docker.com/r/oven/bun/tags
+FROM oven/bun:1 AS base
+WORKDIR /app
+
+# globally install turbo
+FROM base AS builder
+RUN bun install turbo@^2.5.4 --global
+COPY . .
+
+# Generate a partial monorepo with a pruned lockfile for a target workspace.
+RUN turbo prune server --docker
+
+# install dependencies
+FROM base AS installer
+COPY --from=builder /app/out/json/ .
+RUN bun install
+
+ENV NODE_ENV=production
+
+# copy dependencies and source code into final image
+COPY --from=builder /app/out/full/ .
+
+# run the app
+USER bun
+EXPOSE 3000/tcp
+ENTRYPOINT ["bun", "run", "apps/server/src/index.ts"]

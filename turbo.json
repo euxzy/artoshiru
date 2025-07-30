@@ -6,9 +6,12 @@
     "DATABASE_URL",
     "DATABASE_AUTH_TOKEN",
     "CORS_ORIGIN",
+    "DOMAIN_NAME",
     "BETTER_AUTH_SECRET",
     "BETTER_AUTH_URL",
     "EXPO_PUBLIC_SERVER_URL",
+    "PUBLIC_SERVER_URL",
+    "PUBLIC_APP_URL",
     "GITHUB_CLIENT_ID",
     "GITHUB_CLIENT_SECRET"
   ],
@@ -29,6 +32,14 @@
       "persistent": true
     },
     "start": {
+      "cache": false,
+      "persistent": true
+    },
+    "prepare": {
+      "cache": false,
+      "persistent": true
+    },
+    "prepare:web": {
       "cache": false,
       "persistent": true
     },
